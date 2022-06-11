@@ -1,0 +1,10 @@
+﻿@model NoticeBoard
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminF/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@Model.Date</h1>
+<p>@Model.Description</p>
+<a asp-controller="NoticeBoard" asp-action="Index" class="btn btn-dark">Back</a>
+

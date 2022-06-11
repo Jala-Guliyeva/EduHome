@@ -1,0 +1,43 @@
+﻿@model IEnumerable<NoticeBoard>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminF/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">NoticeBoard Table</h4>
+                  <a class="btn btn-success" asp-controller="NoticeBoard" asp-action="Create">Create</a>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Count</th>
+                          <th>Date</th>
+                          <th>Setting</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                          <td>@count</td>
+                          <td>@item.Date.ToString("dd MMMM")</td>
+                          <td>
+                              <a class="btn btn-danger" asp-controller="NoticeBoard" asp-action="Delete" asp-route-id="@item.Id"><i class="mdi mdi-delete"><i/></a><br>
+                              <a class="btn btn-danger" asp-controller="NoticeBoard" asp-action="Update" asp-route-id="@item.Id"><i class="mdi mdi-table-edit"><i/></a><br>
+                              <a class="btn btn-danger" asp-controller="NoticeBoard" asp-action="Detail" asp-route-id="@item.Id"><i class="mdi mdi-account-card-details"><i/></a><br>
+                          </td>
+                        </tr>
+                      }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>

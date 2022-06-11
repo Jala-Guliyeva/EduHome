@@ -48,9 +48,17 @@ namespace EduHome
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+            "areas",
+             "{area:exists}/{controller=dashboard}/{action=Index}/{id?}"
+          );
+                endpoints.MapControllerRoute(
                     "default",
                     "{controller=home}/{action=index}/{id?}");
+
+                
             });
+
+            
         }
     }
 }
