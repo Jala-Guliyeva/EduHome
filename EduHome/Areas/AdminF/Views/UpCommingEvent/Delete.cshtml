@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/AdminF/Views/Shared/_AdminLayout.cshtml";
+}
+<p>Month:@Model.Month.ToString("MMMM")</p>
+<p>Day:@Model.Day.ToString("dd")</p>
+<p>Title:@Model.Title</p>
+<p>Location:@Model.Location</p>
+<p>StartTime:@Model.StartTime.ToString("hh:mm:ss")</p>
+<p>EndTime:@Model.EndTime.ToString("hh:mm:ss")</p>
+
+
+<a asp-controller="UpCommingEvent" asp-action="Index" class="btn btn-dark">Back</a>
+<a asp-controller="UpCommingEvent" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-dark">Delete</a>
+
