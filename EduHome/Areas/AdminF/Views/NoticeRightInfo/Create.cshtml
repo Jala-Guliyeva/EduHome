@@ -1,0 +1,24 @@
+﻿@model NoticeRightInfo
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminF/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+         <form method="post" class="forms-sample">
+                    <div class="form-group">
+                      <label asp-for="Title"></label>
+                      <input asp-for="Title" type="text" class="form-control" placeholder="Title">
+                      <span class="text-danger" asp-validation-for="Title"></span>
+                    </div>
+                      <div class="form-group">
+                      <label asp-for="Description"></label>
+                      <input asp-for="Description" type="text" class="form-control" placeholder="desc">
+                      <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                  </form>
+    </div>
+</div>
+

@@ -41,5 +41,19 @@ namespace EduHome.Areas.AdminF.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(NoticeRightInfo noticeRightInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+
+            return Content($"{noticeRightInfo.Title} {noticeRightInfo.Description}");
+        }
     }
 }

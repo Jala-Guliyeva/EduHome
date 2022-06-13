@@ -158,3 +158,6 @@ C:\Users\TOSHIBA\Desktop\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\Adm
 C:\Users\TOSHIBA\Desktop\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminF\Views\UpCommingEvent\Index.cshtml.g.cs
 C:\Users\TOSHIBA\Desktop\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminF\Views\UpCommingEvent\Detail.cshtml.g.cs
 C:\Users\TOSHIBA\Desktop\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminF\Views\UpCommingEvent\Delete.cshtml.g.cs
+C:\Users\TOSHIBA\Desktop\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminF\Views\UpCommingEvent\Create.cshtml.g.cs
+C:\Users\TOSHIBA\Desktop\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminF\Views\NoticeBoard\Create.cshtml.g.cs
+C:\Users\TOSHIBA\Desktop\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminF\Views\NoticeRightInfo\Create.cshtml.g.cs

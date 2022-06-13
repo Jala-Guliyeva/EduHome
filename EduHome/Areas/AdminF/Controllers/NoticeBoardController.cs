@@ -39,5 +39,21 @@ namespace EduHome.Areas.AdminF.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(NoticeBoard noticeBoard)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return Content($"{noticeBoard.Date.ToString("dd MMMM")} {noticeBoard.Description}");
+
+
+        }
     }
 }

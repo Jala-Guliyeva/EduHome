@@ -1,6 +1,7 @@
 ﻿using EduHome.DAL;
 using EduHome.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,6 +39,22 @@ namespace EduHome.Areas.AdminF.Controllers
             _context.UpCommingEvents.Remove(dbUpCommingEvent);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(UpCommingEvent upCommingEvent)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return Content($"{upCommingEvent.Month.ToString("MMMM")} {upCommingEvent.Day.ToString("dd")} {upCommingEvent.Title} {upCommingEvent.Location } {upCommingEvent.StartTime.ToString("hh:mm:ss")} {upCommingEvent.EndTime.ToString("hh:mm:ss")}");
+            
+        
         }
     }
 }
