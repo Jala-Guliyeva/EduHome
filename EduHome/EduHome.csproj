@@ -5,6 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220614090547_addEventDb.cs" />
+    <Compile Remove="Migrations\20220614090547_addEventDb.Designer.cs" />
+    <Compile Remove="Migrations\20220614091308_addEventList.cs" />
+    <Compile Remove="Migrations\20220614091308_addEventList.Designer.cs" />
+    <Compile Remove="Migrations\20220614091516_addEventList.cs" />
+    <Compile Remove="Migrations\20220614091516_addEventList.Designer.cs" />
+    <Compile Remove="Migrations\20220614091735_addEventList.cs" />
+    <Compile Remove="Migrations\20220614091735_addEventList.Designer.cs" />
+    <Compile Remove="Migrations\20220614091933_addEventList.cs" />
+    <Compile Remove="Migrations\20220614091933_addEventList.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.25">
       <PrivateAssets>all</PrivateAssets>

@@ -1,9 +1,10 @@
 ﻿using EduHome.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.DAL
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext>options):base(options)
         {
@@ -17,5 +18,7 @@ namespace EduHome.DAL
         public DbSet<UpCommingEvent>UpCommingEvents { get; set; }
         public DbSet<Blog>Blogs { get; set; }
         public DbSet<Bio>Bios { get; set; }
+
+        public DbSet<Event>Events { get; set; }
     }
 }

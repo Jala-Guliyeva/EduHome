@@ -46,15 +46,61 @@ namespace EduHome.Areas.AdminF.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(UpCommingEvent upCommingEvent)
+        public async Task<IActionResult> Create(UpCommingEvent upCommingEvent)
         {
             if (ModelState.IsValid)
             {
                 return View();
             }
-            return Content($"{upCommingEvent.Month.ToString("MMMM")} {upCommingEvent.Day.ToString("dd")} {upCommingEvent.Title} {upCommingEvent.Location } {upCommingEvent.StartTime.ToString("hh:mm:ss")} {upCommingEvent.EndTime.ToString("hh:mm:ss")}");
+            bool isExistLocation = _context.UpCommingEvents.Any(u => u.Location.ToLower() == upCommingEvent.Location.ToLower());
+            
+                if (isExistLocation)
+            {
+                ModelState.AddModelError("Location", "eynisi var");
+                return View();
+            }
+                
+            UpCommingEvent newUpCommingEvent = new UpCommingEvent();
+            newUpCommingEvent.Month = upCommingEvent.Month;
+            newUpCommingEvent.Day = upCommingEvent.Day;
+            newUpCommingEvent.Title = upCommingEvent.Title;
+            newUpCommingEvent.Location = upCommingEvent.Location;
+            newUpCommingEvent.StartTime = upCommingEvent.StartTime;
+            newUpCommingEvent.EndTime = upCommingEvent.EndTime;
+           await  _context.UpCommingEvents.AddAsync(newUpCommingEvent);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
             
         
+        }
+        public async Task<IActionResult>Update(int? id)
+        {
+            if (id == null) return NotFound();
+            UpCommingEvent dbUpCommingEvent =await _context.UpCommingEvents.FindAsync(id);
+
+            if (dbUpCommingEvent == null) return NotFound();
+            return View(dbUpCommingEvent);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult>Update(int? id,UpCommingEvent upCommingEvent)
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (id == null) return NotFound();
+            UpCommingEvent dbUpCommingEvent = await _context.UpCommingEvents.FindAsync(id);
+            if (dbUpCommingEvent == null) return NotFound();
+            dbUpCommingEvent.Month = upCommingEvent.Month;
+            dbUpCommingEvent.Day = upCommingEvent.Day;
+            dbUpCommingEvent.Title = upCommingEvent.Title;
+            dbUpCommingEvent.Location = upCommingEvent.Location;
+            dbUpCommingEvent.StartTime = upCommingEvent.StartTime;
+            dbUpCommingEvent.EndTime = upCommingEvent.EndTime;
+            await _context.SaveChangesAsync();
+            return View(); 
         }
     }
 }

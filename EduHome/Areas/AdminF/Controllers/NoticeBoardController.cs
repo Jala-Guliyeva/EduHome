@@ -45,15 +45,46 @@ namespace EduHome.Areas.AdminF.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(NoticeBoard noticeBoard)
+        public async Task<IActionResult> Create(NoticeBoard noticeBoard)
         {
             if (ModelState.IsValid)
             {
                 return View();
             }
-            return Content($"{noticeBoard.Date.ToString("dd MMMM")} {noticeBoard.Description}");
+
+            NoticeBoard newNoticeBoard = new NoticeBoard();
+            newNoticeBoard.Description = noticeBoard.Description;
+            newNoticeBoard.Date = noticeBoard.Date;
+            await _context.NoticeBoards.AddAsync(newNoticeBoard);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
 
 
+        }
+        public async Task<IActionResult> Update(int? id)
+        {
+            if (id == null) return NotFound();
+            NoticeBoard dbNoticeBoard = await _context.NoticeBoards.FindAsync(id);
+
+            if (dbNoticeBoard == null) return NotFound();
+            return View(dbNoticeBoard);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(int? id, NoticeBoard noticeBoard)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (id == null) return NotFound();
+            NoticeBoard dbNoticeBoard = await _context.NoticeBoards.FindAsync(id);
+            if (dbNoticeBoard == null) return NotFound();
+            dbNoticeBoard.Date = noticeBoard.Date;
+            dbNoticeBoard.Description = noticeBoard.Description;
+            await _context.SaveChangesAsync();
+            return View();
         }
     }
 }
